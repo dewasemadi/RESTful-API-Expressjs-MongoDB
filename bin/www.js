@@ -6,13 +6,15 @@
 
 import app from '../app.js';
 import http from 'http';
-// var debug = require('debug')('learn-express:server');
+import dotenv from 'dotenv';
+import debug from 'debug';
+dotenv.config();
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.DB_PORT || '3000');
 app.set('port', port);
 
 /**
@@ -82,5 +84,5 @@ function onError(error) {
 function onListening() {
   var addr = server.address();
   var bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
-  // debug('Listening on ' + bind);
+  debug('Listening on ' + bind);
 }
